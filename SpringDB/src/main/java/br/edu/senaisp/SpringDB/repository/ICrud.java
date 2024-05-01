@@ -10,7 +10,7 @@ public interface ICrud {
 	
 	public Banda buscarPorId(int id);
 	
-	public Banda altera(Banda banda, int id);
+	public Banda altera(String nome, int anolancamento, int id);
 	
 	public void insere(String nome, int anolancamento);
 	

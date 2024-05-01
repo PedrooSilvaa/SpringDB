@@ -32,19 +32,19 @@ public class BandaRepository implements ICrud {
 
 	@Override
 	public Banda buscarPorId(int id) {
-		jdbcTemplate.update(SELECTPORID, 1);
+		jdbcTemplate.update(SELECTPORID, id);
 		return null;
 	}
 
 	@Override
-	public Banda altera(Banda banda, int id) {
-		jdbcTemplate.update(UPDATE, "Popo", 2000, 1);
+	public Banda altera(String nome, int anolancamento, int id) {
+		jdbcTemplate.update(UPDATE, nome, anolancamento, id);
 		return null;
 	}
 
 	@Override
 	public void insere(String nome, int anolancamento) {
-		Object[] params = {nome ,anolancamento};
+		Object[] params = {nome, anolancamento};
 		
 		jdbcTemplate.update(INSERT, params);
 	
@@ -52,7 +52,7 @@ public class BandaRepository implements ICrud {
 
 	@Override
 	public void exclui(int id) {
-		jdbcTemplate.update(DELETE, 1);
+		jdbcTemplate.update(DELETE, id);
 	}
 	
 }
