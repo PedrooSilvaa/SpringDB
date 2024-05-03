@@ -32,8 +32,18 @@ public class BandaRepository implements ICrud {
 
 	@Override
 	public Banda buscarPorId(int id) {
-		jdbcTemplate.update(SELECTPORID, id);
-		return null;
+		
+		Object[] params = {id};
+		
+		return jdbcTemplate.queryForObject(SELECTPORID, 
+				params,
+				(rs, rowNum) -> {
+					return new Banda(rs.getInt("id"),
+							rs.getString("nome"),
+							rs.getInt("anolancamento")
+				);
+					}
+				);
 	}
 
 	@Override

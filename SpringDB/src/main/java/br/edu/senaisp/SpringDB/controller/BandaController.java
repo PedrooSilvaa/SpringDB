@@ -27,6 +27,11 @@ public class BandaController {
 		return bdRep.lista();
 	}
 	
+	@GetMapping("/buscaPorId/{id}")
+	public Banda BuscarPorId(@PathVariable Integer id) {
+		return bdRep.buscarPorId(id);
+	}
+	
 	@PostMapping
 	public String inserir(@RequestBody Banda banda) {
 		
