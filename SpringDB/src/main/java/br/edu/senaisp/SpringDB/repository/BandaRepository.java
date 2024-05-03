@@ -47,14 +47,16 @@ public class BandaRepository implements ICrud {
 	}
 
 	@Override
-	public Banda altera(String nome, int anolancamento, int id) {
-		jdbcTemplate.update(UPDATE, nome, anolancamento, id);
+	public Banda altera(Banda banda, int id) {
+		Object[] params = {banda.getNome(), banda.getAnoLancamento(), id};
+		
+		jdbcTemplate.update(UPDATE, params);
 		return null;
 	}
 
 	@Override
-	public void insere(String nome, int anolancamento) {
-		Object[] params = {nome, anolancamento};
+	public void insere(Banda banda) {
+		Object[] params = {banda.getNome(), banda.getAnoLancamento()};
 		
 		jdbcTemplate.update(INSERT, params);
 	

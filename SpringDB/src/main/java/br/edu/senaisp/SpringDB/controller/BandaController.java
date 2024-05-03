@@ -22,12 +22,12 @@ public class BandaController {
 	@Autowired
 	private BandaRepository bdRep;
 	
-	@GetMapping("/lista")
+	@GetMapping
 	public List<Banda> ListaBandas() {
 		return bdRep.lista();
 	}
 	
-	@GetMapping("/buscaPorId/{id}")
+	@GetMapping("/{id}")
 	public Banda BuscarPorId(@PathVariable Integer id) {
 		return bdRep.buscarPorId(id);
 	}
@@ -37,17 +37,17 @@ public class BandaController {
 		
 		System.out.println(banda.getAnoLancamento());
 		
-		bdRep.insere(banda.getNome(), banda.getAnoLancamento());
+		bdRep.insere(banda);
 		
 		return banda.getNome()+" "+ banda.getAnoLancamento();
 	}
 	
-	@PutMapping("update/{id}")
+	@PutMapping("{id}")
 	public void update(@PathVariable Integer id, @RequestBody Banda banda) {
-		bdRep.altera(banda.getNome(), banda.getAnoLancamento(), id);
+		bdRep.altera(banda, id);
 	}
 	
-	@DeleteMapping("/delete/{id}")
+	@DeleteMapping("{id}")
 	public void delete(@PathVariable Integer id) {
 		bdRep.exclui(id);
 	}
